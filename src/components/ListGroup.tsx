@@ -1,37 +1,37 @@
 import { useState } from "react";
 
-const ListGroup = () => {
-  const cities = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-  const [selectedCity, setSelectedCity] = useState<string | null>(null); 
-  const getMessage = () => {
-    return cities.length === 0 ? <p>No cities found</p> : <p>Cities found</p>;
-  };
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
 
-  const handleClick = (city: string) => {
-    setSelectedCity(city);
-  };
-  const getCities = () => {
-    return cities.length > 0 ? (
-      <ul className="list-group">
-        {cities.map((city) => (
-          <li
-            className={selectedCity === city ? "list-group-item active" : "list-group-item"}
-            key={city}
-            onClick={() => handleClick(city)}
-          >
-            {city}
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>No cities found</p>
-    );
-  };
+const ListGroup = ({ items, heading }: ListGroupProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     <>
-      <h1 className="mb-3">Cities</h1>
-      {getMessage()}
-      {getCities()}
+      <h1 className="mb-3 text-center text-primary fw-bold fs-3 text-uppercase text-capitalize">
+        {heading}
+      </h1>
+      {items.length === 0 ? (
+        <p>No items found</p>
+      ) : (
+        <ul className="list-group">
+          {items.map((item, index) => (
+            <li
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              key={index}
+              onClick={() => setSelectedIndex(index)}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 };
