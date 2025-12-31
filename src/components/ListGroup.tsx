@@ -1,11 +1,17 @@
 import { useState } from "react";
+import Button from "./Button";
 
 interface ListGroupProps {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-const ListGroup = ({ items, heading }: ListGroupProps) => {
+const ListGroup = ({
+  items,
+  heading,
+  onSelectItem = () => {},
+}: ListGroupProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
@@ -25,15 +31,23 @@ const ListGroup = ({ items, heading }: ListGroupProps) => {
                   : "list-group-item"
               }
               key={index}
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => {
+                setSelectedIndex(index);
+                onSelectItem(item);
+              }}
             >
               {item}
             </li>
           ))}
         </ul>
       )}
+      <Button color="danger" onClick={() => console.log("Button clicked")}>
+        Click me
+      </Button>
     </>
   );
 };
+
+
 
 export default ListGroup;
