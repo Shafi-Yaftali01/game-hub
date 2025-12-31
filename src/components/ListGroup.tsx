@@ -1,11 +1,18 @@
 const ListGroup = () => {
+  const cities = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
   return (
     <>
-    <h1 className="mb-3">List Group</h1>
-    <ul className="list-group">
-        <li className="list-group-item">Jhon Doe</li>
-        <li className="list-group-item">Jane Doe</li>
-        <li className="list-group-item">Jim Doe</li>
+      <h1 className="mb-3">Cities</h1>
+      <ul className="list-group">
+        {cities.map(
+          (
+            city // cities.map is a method that returns a new array with the cities mapped to the new array
+          ) => (
+            <li className="list-group-item" key={city}>
+              {city}
+            </li>
+          )
+        )}
       </ul>
     </>
   );
