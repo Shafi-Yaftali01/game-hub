@@ -1,12 +1,12 @@
-import Alert from "./components/Alerts";
-import { useState } from "react";
+import ExpandableText from "./components/ExpandableText";
 const App = () => {
-  const [showAlert, setShowAlert] = useState(true);
-  return showAlert ? (
-    <Alert onClose={() => setShowAlert(false)}>
-      <strong>Holy guacamole!</strong> You should check in on some of those
-      fields below.
-    </Alert>
-  ) : null;
+  return (
+    <div className="container mt-5 d-flex justify-content-center align-items-center flex-column gap-4 flex-wrap">
+      <ExpandableText
+        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        maxLength={100}
+      />
+    </div>
+  );
 };
 export default App;
