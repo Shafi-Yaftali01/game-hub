@@ -1,9 +1,7 @@
-import ProductList from "./components/ProductList.tsx";
-
 const App = () => {
   return (
     <div>
-      <ProductList />
+      <h1>Hello World</h1>
     </div>
   );
 };
